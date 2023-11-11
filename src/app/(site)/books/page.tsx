@@ -34,6 +34,16 @@ function BooksPage() {
     router.push(`/books/edit?id=${book.id}`);
   }
 
+  async function handleDelete(book: Book) {
+    try {
+      const res = await fetch(`/api/delete-book/${book.id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      
+    } catch (error) {}
+  }
+
   return (
     <div className="w-full max-w-5xl mx-auto text-center">
       <h1 className="text-3xl font-bold mt-20 capitalize">books list</h1>
@@ -55,7 +65,7 @@ function BooksPage() {
             <button
               className=" text-xs text-gray-900 leading-7 hover:text-gray-900/70"
               disabled={!book.checked}
-              // onClick={() => handleDelete(book)}
+              onClick={() => handleDelete(book)}
             >
               {book.checked ? 'Delete' : ''}
             </button>
