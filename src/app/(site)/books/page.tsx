@@ -40,8 +40,15 @@ function BooksPage() {
         method: 'DELETE',
       });
       const data = await res.json();
-      
-    } catch (error) {}
+
+      if (res.ok) {
+        alert('Book deleted successfully');
+        setBooks(books.filter((book: Book) => book.id !== data.id));
+        window.location.reload;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
