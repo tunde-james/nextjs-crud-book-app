@@ -26,7 +26,7 @@ function CreatePost() {
       alert('Post created successfully');
       setTitle('');
       setDate('');
-      router.push('/book');
+      router.push('/books');
     } else {
       alert('Something went wrong while creating a book');
     }
